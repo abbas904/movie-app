@@ -1,0 +1,94 @@
+@use "../../scss/" as *;
+
+.footer {
+  position: relative;
+  padding: 6rem 2rem;
+  background-color: #0a0a0a; // خلفية سوداء داكنة
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #eee; // لون النص الأساسي أبيض فاتح
+
+  &__content {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    &__logo {
+      @include flex(center, center);
+      margin-bottom: 4rem;
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        img {
+          width: 50px;
+          height: auto;
+          filter: drop-shadow(0 0 4px #c41e3a); // ظل أحمر خفيف للشعار
+        }
+
+        a {
+          font-size: 2.4rem;
+          font-weight: 800;
+          color: #c41e3a; // أحمر أساسي
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          text-decoration: none;
+          transition: color 0.3s;
+
+          &:hover {
+            color: #ff4b5c; // أحمر فاتح عند المرور
+            text-shadow: 0 0 8px #ff4b5c;
+          }
+        }
+      }
+    }
+
+    &__menus {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 5rem;
+
+      @include mobile {
+        gap: 3rem;
+      }
+    }
+
+    &__menu {
+      background: rgba(196, 30, 58, 0.1); // خلفية أحمر فاتح مع شفافية
+      box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3); // ظل أحمر خفيف
+      padding: 2.5rem 3rem;
+      border-radius: 16px;
+      min-width: 180px;
+      @include flex(flex-start, flex-start);
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: #eee;
+      transition: background 0.4s, box-shadow 0.4s;
+
+      &:hover {
+        background: rgba(255, 75, 92, 0.15);
+        box-shadow: 0 6px 25px rgba(255, 75, 92, 0.6);
+      }
+
+      a {
+        color: #eee;
+        text-decoration: none;
+        transition: color 0.3s;
+
+        &:hover {
+          color: #ff4b5c; // أحمر فاتح للنص عند المرور
+          text-shadow: 0 0 5px #ff4b5c;
+        }
+      }
+
+      & > * ~ * {
+        margin-top: 1.2rem;
+      }
+    }
+  }
+}

@@ -1,0 +1,35 @@
+@use "variables" as *;
+
+@mixin flex($align-items, $justify-content) {
+  display: flex;
+  align-items: $align-items;
+  justify-content: $justify-content;
+}
+
+@mixin overlay($color: $black, $alpha: 0.6) {
+  background-color: rgba(
+    red($color),
+    green($color),
+    blue($color),
+    $alpha
+  );
+}
+
+// هنا تضيف الميكسينات الخاصة بالريسبونسيف
+@mixin responsive-mobile {
+  @media only screen and (max-width: 600px) {
+    @content;
+  }
+}
+
+@mixin responsive-tablet {
+  @media only screen and (min-width: 601px) and (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin responsive-desktop {
+  @media only screen and (min-width: 1025px) {
+    @content;
+  }
+}

@@ -166,24 +166,23 @@
 }
 
 .btn-signup {
-  background-color: #ff0000;
+   background-color: transparent;
   color: #fff;
-  margin-left: 0.5rem;
+  border: 2px solid #ff0000;
 
   &:hover {
-    opacity: 0.8;
+    background-color: #ff0000;
+    color: #fff;
   }
 
   @include responsive-mobile {
     padding: 0.3rem 0.8rem;
     font-size: 0.9rem;
-    margin-left: 0.3rem;
   }
 
   @include responsive-tablet {
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    margin-left: 0.5rem;
   }
 }
 

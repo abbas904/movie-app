@@ -1,4 +1,5 @@
-@use "../../scss/" as *;
+@use "../../scss/mixins" as mixins;
+@use "../../scss/variables" as *;
 
 button {
   cursor: pointer;
@@ -23,8 +24,17 @@ button {
 
   &.small {
     border-width: 2px;
-    padding: 0.25rem 1.5rem;
-    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  @include mixins.responsive-mobile {
+    padding: 0.3rem 1rem;
+    font-size: 1.1rem;
+
+    &.small {
+      padding: 0.15rem 0.4rem;
+      font-size: 0.9rem;
+    }
   }
 }
 
@@ -39,5 +49,10 @@ button {
     box-shadow: unset;
     color: $main-color;
     background-color: $white;
+  }
+
+  @include mixins.responsive-mobile {
+    padding: 0.3rem 1rem;
+    font-size: 1.1rem;
   }
 }

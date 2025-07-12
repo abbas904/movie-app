@@ -1,4 +1,5 @@
-@use "../../scss/" as *;
+@use "../../scss/mixins" as mixins;
+@use "../../scss/variables" as *;
 
 .movie-list {
   &__grid {
@@ -55,7 +56,6 @@
   }
 }
 
-// Optimized movie card styles
 .movie-card {
   position: relative;
   background: $body-bg;
@@ -70,12 +70,19 @@
 
   &__poster {
     position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 150%; // نسبة العرض للارتفاع 2:3
+
     overflow: hidden;
 
     &__img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      height: 300px;
-      object-fit: cover;
+      height: 100%;
+      object-fit: cover; // تغطي كامل مساحة العنصر
       transition: transform 0.3s ease;
 
       &.loading {
@@ -102,7 +109,6 @@
   }
 }
 
-// Virtualized list styles
 .virtualized-list {
   &::-webkit-scrollbar {
     width: 8px;
@@ -121,4 +127,4 @@
       background: darken($main-color, 10%);
     }
   }
-} 
+}

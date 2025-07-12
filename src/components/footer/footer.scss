@@ -1,21 +1,22 @@
-@use "../../scss/" as *;
+@use "../../scss/mixins" as mixins;
+@use "../../scss/variables" as *;
 
 .footer {
   position: relative;
-  padding: 6rem 2rem;
-  background-color: #0a0a0a; // خلفية سوداء داكنة
+  padding: 3rem 2rem;
+  background-color: #0a0a0a;
+  color: #eee;
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #eee; // لون النص الأساسي أبيض فاتح
 
   &__content {
     max-width: 1100px;
     margin: 0 auto;
 
     &__logo {
-      @include flex(center, center);
-      margin-bottom: 4rem;
+      @include mixins.flex(center, center);
+      margin-bottom: 2rem;
 
       .logo {
         display: flex;
@@ -25,20 +26,20 @@
         img {
           width: 50px;
           height: auto;
-          filter: drop-shadow(0 0 4px #c41e3a); // ظل أحمر خفيف للشعار
+          filter: drop-shadow(0 0 4px #c41e3a);
         }
 
         a {
           font-size: 2.4rem;
           font-weight: 800;
-          color: #c41e3a; // أحمر أساسي
+          color: #c41e3a;
           text-transform: uppercase;
           letter-spacing: 1.5px;
           text-decoration: none;
           transition: color 0.3s;
 
           &:hover {
-            color: #ff4b5c; // أحمر فاتح عند المرور
+            color: #ff4b5c;
             text-shadow: 0 0 8px #ff4b5c;
           }
         }
@@ -49,20 +50,26 @@
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 5rem;
+      gap: 4rem;
 
-      @include mobile {
-        gap: 3rem;
+      @include mixins.responsive-mobile {
+        flex-direction: row;
+        flex-wrap: nowrap; /* يمنع التفاف الأعمدة تحت بعض */
+        gap: 1.5rem;
+        justify-content: flex-start;
+        overflow-x: auto; /* تمكين التمرير الأفقي */
+        padding-bottom: 1rem;
+        -webkit-overflow-scrolling: touch; /* تحسين التمرير على iOS */
       }
     }
 
     &__menu {
-      background: rgba(196, 30, 58, 0.1); // خلفية أحمر فاتح مع شفافية
-      box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3); // ظل أحمر خفيف
+      background: rgba(196, 30, 58, 0.1);
+      box-shadow: 0 4px 15px rgba(196, 30, 58, 0.3);
       padding: 2.5rem 3rem;
       border-radius: 16px;
       min-width: 180px;
-      @include flex(flex-start, flex-start);
+      display: flex;
       flex-direction: column;
       align-items: flex-start;
       font-size: 1.6rem;
@@ -78,16 +85,22 @@
       a {
         color: #eee;
         text-decoration: none;
-        transition: color 0.3s;
+        margin-top: 1.2rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
 
         &:hover {
-          color: #ff4b5c; // أحمر فاتح للنص عند المرور
+          color: #ff4b5c;
           text-shadow: 0 0 5px #ff4b5c;
         }
       }
 
-      & > * ~ * {
-        margin-top: 1.2rem;
+      @include mixins.responsive-mobile {
+        padding: 1.5rem 2rem;
+        min-width: 140px;
+        font-size: 1.4rem;
       }
     }
   }
